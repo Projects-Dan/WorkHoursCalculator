@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:controller="com.example.hourgenerator2.HourController" prefWidth="560" spacing="18"
+      style="-fx-background-color: #f4f6f8; -fx-font-family: 'Segoe UI', Arial;"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <padding>
+      <Insets bottom="28" left="32" right="32" top="28" />
+   </padding>
+
+   <VBox spacing="4">
+      <Label text="Hour Calculator" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #1f2937;" />
+      <Label fx:id="myLabel" text="Enter start and end date" style="-fx-font-size: 13px; -fx-text-fill: #6b7280;" />
+   </VBox>
+
+   <!-- Step 1: dates -->
+   <HBox spacing="16">
+      <VBox spacing="6" HBox.hgrow="ALWAYS">
+         <Label text="Start date" style="-fx-font-weight: bold; -fx-text-fill: #4b5563;" />
+         <DatePicker fx:id="startDate" onAction="#getStartDate" maxWidth="Infinity" promptText="Choose start date" />
+      </VBox>
+      <VBox spacing="6" HBox.hgrow="ALWAYS">
+         <Label text="End date" style="-fx-font-weight: bold; -fx-text-fill: #4b5563;" />
+         <DatePicker fx:id="endDate" onAction="#getEndDate" maxWidth="Infinity" promptText="Choose end date" />
+      </VBox>
+   </HBox>
+
+   <Button fx:id="calcDaysButton" text="1. Calculate days" onAction="#calculateDays" maxWidth="Infinity" mnemonicParsing="false"
+           style="-fx-background-color: #111827; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 12 0 12 0; -fx-cursor: hand;" />
+
+   <!-- Step 2: edit counts and enter hours -->
+   <VBox style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.10), 12, 0, 0, 2);">
+      <padding>
+         <Insets bottom="18" left="22" right="22" top="18" />
+      </padding>
+      <GridPane hgap="16" vgap="10">
+         <columnConstraints>
+            <ColumnConstraints prefWidth="130" />
+            <ColumnConstraints prefWidth="120" />
+            <ColumnConstraints hgrow="ALWAYS" prefWidth="140" />
+         </columnConstraints>
+
+         <Label text="Weekday" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #6b7280;" />
+         <Label text="Days worked" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #6b7280;" />
+         <Label text="Hours per day" GridPane.columnIndex="2" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #6b7280;" />
+
+         <Label text="Monday" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+         <TextField fx:id="monCount" text="0" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         <TextField fx:id="monHours" promptText="0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+
+         <Label text="Tuesday" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+         <TextField fx:id="tueCount" text="0" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <TextField fx:id="tueHours" promptText="0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+
+         <Label text="Wednesday" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+         <TextField fx:id="wedCount" text="0" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         <TextField fx:id="wedHours" promptText="0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+
+         <Label text="Thursday" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+         <TextField fx:id="thuCount" text="0" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         <TextField fx:id="thuHours" promptText="0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+
+         <Label text="Friday" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+         <TextField fx:id="friCount" text="0" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         <TextField fx:id="friHours" promptText="0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+
+         <Label text="Saturday" GridPane.columnIndex="0" GridPane.rowIndex="6" style="-fx-text-fill: #9ca3af;" />
+         <TextField fx:id="satCount" text="0" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         <TextField fx:id="satHours" promptText="0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+
+         <Label text="Sunday" GridPane.columnIndex="0" GridPane.rowIndex="7" style="-fx-text-fill: #9ca3af;" />
+         <TextField fx:id="sunCount" text="0" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+         <TextField fx:id="sunHours" promptText="0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+      </GridPane>
+   </VBox>
+
+   <Button fx:id="calcHoursButton" text="2. Calculate hours" onAction="#calculateHours" maxWidth="Infinity" mnemonicParsing="false"
+           style="-fx-background-color: #2563eb; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 12 0 12 0; -fx-cursor: hand;" />
+
+   <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-background-color: #e5e7eb; -fx-background-radius: 10;">
+      <padding>
+         <Insets bottom="16" left="22" right="22" top="16" />
+      </padding>
+      <Label text="Total hours" style="-fx-text-fill: #374151; -fx-font-size: 16px;" />
+      <Label fx:id="totalHours" text="0" style="-fx-text-fill: #111827; -fx-font-size: 26px; -fx-font-weight: bold;" />
+   </HBox>
+</VBox>
